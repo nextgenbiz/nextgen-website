@@ -6,6 +6,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ContactModalProvider from "@/components/forms/ContactModalProvider";
 import ChatbotLoader from "@/components/chatbot/ChatbotLoader";
+import MobileActionBar from "@/components/layout/MobileActionBar";
 import JsonLd from "@/components/seo/JsonLd";
 import { SITE } from "@/lib/site";
 
@@ -149,6 +150,7 @@ export default function RootLayout({ children }) {
           <Header />
           <main id="main">{children}</main>
           <Footer />
+          <MobileActionBar />
           <ChatbotLoader />
         </ContactModalProvider>
 

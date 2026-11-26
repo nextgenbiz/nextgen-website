@@ -1,11 +1,12 @@
+import Link from "next/link";
 import Script from "next/script";
-import { Clock, Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
-import PageHero from "@/components/ui/PageHero";
+import { ChevronRight, Clock, Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
 import { Container, Section } from "@/components/ui/Section";
-import LeadForm from "@/components/forms/LeadForm";
+import ContactFormCard from "@/components/forms/ContactFormCard";
 import CtaBand from "@/components/home/CtaBand";
 import JsonLd, { breadcrumbLd } from "@/components/seo/JsonLd";
-import { MotifMark } from "@/components/ui/Motif";
+import { MotifBackdrop } from "@/components/ui/Motif";
+import { SupportScene } from "@/components/illustrations";
 import { OFFICES, SITE } from "@/lib/site";
 
 const ogTitle = "Get in Touch | Expert Business Support at NextGen Consultancy";
@@ -31,6 +32,29 @@ export const metadata = {
   twitter: { card: "summary_large_image", title: ogTitle, description: ogDescription, images: [image], creator: SITE.twitter },
 };
 
+function ContactDetails() {
+  const rows = [
+    { icon: Phone, label: "Call us", node: <a href={SITE.phoneHref} className="hover:text-heaven">{SITE.phone}</a> },
+    { icon: Mail, label: "Email", node: <a href={`mailto:${SITE.email}`} className="[overflow-wrap:anywhere] hover:text-heaven">{SITE.email}</a> },
+    { icon: Clock, label: "Working hours", node: <span>{SITE.hours}</span> },
+  ];
+  return (
+    <ul className="space-y-5">
+      {rows.map(({ icon: Icon, label, node }) => (
+        <li key={label} className="flex items-center gap-4">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white/10 text-heaven">
+            <Icon className="h-5 w-5" aria-hidden="true" />
+          </span>
+          <div>
+            <p className="text-sm text-white/60">{label}</p>
+            <p className="text-lg font-semibold text-white">{node}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default function ContactPage() {
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
   return (
@@ -45,62 +69,51 @@ export default function ContactPage() {
         <Script src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`} strategy="afterInteractive" />
       )}
 
-      <PageHero
-        eyebrow="Contact"
-        title={
-          <>
-            Let&apos;s build something
-            <br />
-            <span className="text-heaven">great together.</span>
-          </>
-        }
-        lead="Partner with industry experts who deliver innovative solutions tailored to your unique business needs."
-        crumbs={[{ label: "Contact" }]}
-      />
+      {/*
+        The form lives in the hero on purpose: on a 768px-tall laptop the old layout pushed it
+        below the fold. Order on phones: headline -> form -> details + art.
+        On desktop: headline + illustration on the left, form on the right, brand circles bleeding
+        behind the card (Swiss-poster style asymmetry).
+      */}
+      <section className="on-dark relative overflow-hidden bg-champion">
+        <div aria-hidden="true" className="pointer-events-none absolute -right-44 -top-16 hidden h-[135%] w-[50rem] lg:block">
+          <MotifBackdrop />
+        </div>
 
-      <Section>
-        <Container className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-5">
-            <MotifMark className="mb-5 h-5" />
-            <h2 className="h2">Talk to our team.</h2>
-            <p className="lead mt-4">
-              Tell us a little about your business. We reply quickly and always with a clear next step.
+        <Container className="relative grid gap-x-14 gap-y-8 pb-14 pt-28 md:pt-32 lg:grid-cols-12 lg:pb-16">
+          {/* 1. headline (+ illustration on desktop) */}
+          <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1">
+            <nav aria-label="Breadcrumb" className="mb-5">
+              <ol className="flex items-center gap-1.5 text-[13px] text-white/60">
+                <li><Link href="/" className="hover:text-white">Home</Link></li>
+                <li className="flex items-center gap-1.5">
+                  <ChevronRight className="h-3.5 w-3.5" />
+                  <span className="text-white/90" aria-current="page">Contact</span>
+                </li>
+              </ol>
+            </nav>
+            <p className="eyebrow mb-3">Contact</p>
+            <h1 className="h1 !text-[2.25rem] md:!text-[2.875rem]">
+              Let&apos;s build something <span className="text-heaven">great together.</span>
+            </h1>
+            <p className="lead mt-4 max-w-md">
+              Partner with industry experts who deliver innovative solutions tailored to your unique business needs.
             </p>
-
-            <ul className="mt-10 space-y-6">
-              <li className="flex gap-4">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-impact-50 text-impact"><Phone className="h-5 w-5" /></span>
-                <div>
-                  <p className="text-sm text-mute">Call us</p>
-                  <a href={SITE.phoneHref} className="text-lg font-semibold text-champion hover:text-impact">{SITE.phone}</a>
-                </div>
-              </li>
-              <li className="flex gap-4">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-impact-50 text-impact"><Mail className="h-5 w-5" /></span>
-                <div>
-                  <p className="text-sm text-mute">Email</p>
-                  <a href={`mailto:${SITE.email}`} className="text-lg font-semibold text-champion [overflow-wrap:anywhere] hover:text-impact">{SITE.email}</a>
-                </div>
-              </li>
-              <li className="flex gap-4">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-impact-50 text-impact"><Clock className="h-5 w-5" /></span>
-                <div>
-                  <p className="text-sm text-mute">Working hours</p>
-                  <p className="text-lg font-semibold text-champion">{SITE.hours}</p>
-                </div>
-              </li>
-            </ul>
+            <SupportScene className="mt-8 hidden w-full max-w-[19rem] lg:block" />
           </div>
 
-          <div className="lg:col-span-7">
-            <div className="rounded-3xl border border-line bg-white p-6 shadow-card md:p-10">
-              <h2 className="h3 mb-1">Send us a message</h2>
-              <p className="mb-8 text-sm text-mute">All fields are required unless marked optional.</p>
-              <LeadForm showService messageRequired submitLabel="Send message" />
-            </div>
+          {/* 2. the form: right column on desktop, right after the headline on phones */}
+          <div className="lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1">
+            <ContactFormCard />
+          </div>
+
+          {/* 3. details (+ illustration on tablet/phone, where it would otherwise push the form down) */}
+          <div className="lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-end">
+            <ContactDetails />
+            <SupportScene className="mx-auto mt-10 w-full max-w-[17rem] lg:hidden" />
           </div>
         </Container>
-      </Section>
+      </section>
 
       <Section tone="surface" id="offices">
         <Container>

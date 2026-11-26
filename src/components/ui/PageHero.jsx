@@ -13,7 +13,7 @@ export default function PageHero({ eyebrow, title, lead, crumbs = [], children, 
       <div aria-hidden="true" className="pointer-events-none absolute -right-28 top-24 hidden h-[125%] w-[38rem] opacity-90 md:block">
         <MotifBackdrop />
       </div>
-      <Container className={size === "lg" ? "relative pb-20 pt-36 md:pb-28 md:pt-44" : "relative pb-14 pt-32 md:pb-20 md:pt-40"}>
+      <Container className={size === "lg" ? "relative pb-16 pt-32 md:pb-20 md:pt-36" : "relative pb-12 pt-28 md:pb-14 md:pt-32"}>
         {crumbs.length > 0 && (
           <nav aria-label="Breadcrumb" className="mb-6">
             <ol className="flex flex-wrap items-center gap-1.5 text-[13px] text-white/60">

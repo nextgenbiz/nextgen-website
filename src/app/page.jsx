@@ -2,6 +2,7 @@ import Script from "next/script";
 import HomeHero from "@/components/home/HomeHero";
 import Ticker from "@/components/home/Ticker";
 import ServicesOverview from "@/components/home/ServicesOverview";
+import HowItWorks from "@/components/home/HowItWorks";
 import Programs from "@/components/home/Programs";
 import Principles from "@/components/home/Principles";
 import Stats from "@/components/home/Stats";
@@ -55,6 +56,7 @@ export default function Home() {
       <HomeHero />
       <Ticker />
       <ServicesOverview />
+      <HowItWorks />
       <Programs />
       <Principles />
       <Stats />

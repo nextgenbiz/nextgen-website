@@ -115,7 +115,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container flex flex-col items-center justify-between gap-2 py-5 text-xs text-white/60 sm:flex-row">
+        <div className="container flex flex-col items-center justify-between gap-2 py-5 pb-24 text-xs text-white/60 sm:flex-row sm:pb-5">
           <p>© {year} Next-Gen Business Consultancy Pvt. Ltd. All rights reserved.</p>
           <p className="uppercase tracking-[0.14em]">Nextgen Group of Companies</p>
         </div>

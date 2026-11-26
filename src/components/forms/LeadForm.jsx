@@ -1,7 +1,8 @@
 "use client";
 
 import { useId, useState } from "react";
-import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
+import { SuccessBurst } from "@/components/illustrations";
 import { INDIAN_STATES } from "@/lib/site";
 import { submitLead, validateLead } from "@/lib/leads";
 import { cn } from "@/lib/utils";
@@ -36,6 +37,7 @@ export default function LeadForm({
   service = "",
   showService = false,
   messageRequired = false,
+  messageRows = 4,
   submitLabel = "Send enquiry",
   onSuccess,
   className,
@@ -59,6 +61,13 @@ export default function LeadForm({
     setStatus((s) => (s.error ? { ...s, error: "" } : s));
   };
 
+  // Validate a single field when the visitor leaves it (not while typing).
+  const validateOnBlur = (key) => () => {
+    const required = key === "message" && !messageRequired ? [] : [key];
+    const found = validateLead(values, { require: required });
+    setErrors((er) => ({ ...er, [key]: found[key] }));
+  };
+
   async function onSubmit(e) {
     e.preventDefault();
     if (values.website) {
@@ -73,6 +82,9 @@ export default function LeadForm({
     if (Object.keys(found).length) {
       setErrors(found);
       setStatus({ loading: false, done: false, error: "Please fix the highlighted fields." });
+      // send keyboard and screen-reader users straight to the first problem
+      const first = ["name", "phone", "email", "state", "service", "message"].find((k) => found[k]);
+      if (first) requestAnimationFrame(() => document.getElementById(`${uid}-${first}`)?.focus());
       return;
     }
     setStatus({ loading: true, done: false, error: "" });
@@ -88,10 +100,8 @@ export default function LeadForm({
   if (status.done) {
     return (
       <div className={cn("py-10 text-center", className)} role="status">
-        <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-impact-50 text-impact">
-          <CheckCircle2 className="h-7 w-7" />
-        </span>
-        <h3 className="h3 mt-5">Thank you, we&apos;ve got it.</h3>
+        <SuccessBurst className="mx-auto w-44 animate-rise" />
+        <h3 className="h3 mt-2">Thank you, we&apos;ve got it.</h3>
         <p className="mx-auto mt-2 max-w-sm text-champion/80">
           Our team will contact you shortly on the number you shared.
         </p>
@@ -103,6 +113,7 @@ export default function LeadForm({
     id: `${uid}-${key}`,
     value: values[key],
     onChange: set(key),
+    onBlur: validateOnBlur(key),
     "aria-invalid": errors[key] ? true : undefined,
     "aria-describedby": errors[key] ? `${uid}-${key}-err` : undefined,
     className: cn("field", errors[key] && "field-error"),
@@ -153,7 +164,7 @@ export default function LeadForm({
       )}
 
       <Field id={`${uid}-message`} label={messageRequired ? "Message" : "Message (optional)"} error={errors.message}>
-        <textarea rows={4} placeholder="Tell us a little about your business and what you need" {...inputProps("message")} />
+        <textarea rows={messageRows} placeholder="Tell us a little about your business and what you need" {...inputProps("message")} />
       </Field>
 
       {status.error && (

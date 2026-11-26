@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, FileText, ListChecks, MessageCircleQuestion, Route } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import PageToc from "@/components/ui/PageToc";
 import Accordion from "@/components/ui/Accordion";
@@ -70,6 +70,14 @@ export default async function ServicePage({ params }) {
     c.faq?.length && { id: "faq", label: "Frequently Asked Questions" },
   ].filter(Boolean);
 
+  // "At a glance" cards only report what the page really contains (counts come from the data).
+  const glance = [
+    docs?.length && { href: "#documents", icon: FileText, value: docs.length, label: docs.length === 1 ? "document required" : "documents required" },
+    c.eligibilityRequirements?.length && { href: "#eligibility", icon: ListChecks, value: c.eligibilityRequirements.length, label: "eligibility points" },
+    c.registrationProcess?.length && { href: "#process", icon: Route, value: c.registrationProcess.length, label: "steps in the process" },
+    c.faq?.length && { href: "#faq", icon: MessageCircleQuestion, value: c.faq.length, label: "questions answered" },
+  ].filter(Boolean);
+
   return (
     <>
       <JsonLd
@@ -105,7 +113,30 @@ export default async function ServicePage({ params }) {
         </div>
       </PageHero>
 
-      <section className="section">
+      {glance.length > 0 && (
+        <Container className="relative z-10 -mt-8 md:-mt-10">
+          <ul className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+            {glance.map((g) => {
+              const Icon = g.icon;
+              return (
+                <li key={g.href}>
+                  <a href={g.href} className="group flex h-full items-center gap-3.5 rounded-2xl border border-line bg-white p-4 shadow-card transition hover:-translate-y-0.5 hover:border-impact md:p-5">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-impact-50 text-impact transition-colors group-hover:bg-impact group-hover:text-white">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <span>
+                      <span className="block font-display text-2xl leading-none text-champion">{g.value}</span>
+                      <span className="mt-1 block text-[13px] leading-tight text-mute">{g.label}</span>
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </Container>
+      )}
+
+      <section className="section !pt-12 md:!pt-16">
         <Container className="grid gap-10 lg:grid-cols-12 lg:gap-14">
           {/* mobile: horizontal chips */}
           <div className="lg:hidden">
@@ -137,7 +168,7 @@ export default async function ServicePage({ params }) {
               )}
 
               <div className="on-dark rounded-2xl bg-champion p-6">
-                <h3 className="text-h4 font-semibold text-white">Ready to get started?</h3>
+                <h2 className="text-h4 font-semibold text-white">Ready to get started?</h2>
                 <p className="mt-2 text-[15px] text-white/70">Talk to an expert about {b.title}. No obligations.</p>
                 <ApplyButton service={b.title} className="btn btn-light mt-5 w-full">
                   Book a free consultation

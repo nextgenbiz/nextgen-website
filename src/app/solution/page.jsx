@@ -5,6 +5,7 @@ import PageHero from "@/components/ui/PageHero";
 import { Container, Section, SectionHeading } from "@/components/ui/Section";
 import ServiceExplorer from "@/components/solution/ServiceExplorer";
 import Programs from "@/components/home/Programs";
+import FundingFinder from "@/components/solution/FundingFinder";
 import FaqSection from "@/components/home/FaqSection";
 import CtaBand from "@/components/home/CtaBand";
 import ApplyButton from "@/components/forms/ApplyButton";
@@ -107,6 +108,7 @@ export default function SolutionPage() {
         </Container>
       </Section>
 
+      <FundingFinder />
       <Programs />
       <FaqSection items={SOLUTION_FAQ} tone="surface" lead="Clear answers to help you move forward with confidence." />
       <CtaBand />

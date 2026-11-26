@@ -26,6 +26,14 @@ export default function NotFound() {
       </PageHero>
       <section className="section">
         <div className="container">
+          <div aria-hidden="true" className="mb-14 flex items-center justify-center gap-3 font-display text-[7rem] leading-none text-champion sm:gap-6 sm:text-[11rem]">
+            <span>4</span>
+            <svg viewBox="0 0 130 130" className="h-[6.2rem] w-[6.2rem] sm:h-[9.5rem] sm:w-[9.5rem]">
+              <circle cx="46" cy="52" r="40" fill="#0F42C0" />
+              <circle cx="84" cy="80" r="40" fill="#7A9FF9" />
+            </svg>
+            <span>4</span>
+          </div>
           <p className="eyebrow mb-3">Popular pages</p>
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {suggestions.map((s) => (

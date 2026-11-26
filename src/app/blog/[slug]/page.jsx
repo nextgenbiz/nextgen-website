@@ -115,7 +115,7 @@ export default async function BlogPostPage({ params }) {
                 <PageToc items={toc} />
               </div>
               <div className="on-dark rounded-2xl bg-champion p-6">
-                <h3 className="text-h4 font-semibold text-white">Need help applying?</h3>
+                <h2 className="text-h4 font-semibold text-white">Need help applying?</h2>
                 <p className="mt-2 text-[15px] text-white/70">Our experts can guide you end to end.</p>
                 <ApplyButton service={`Blog: ${title}`} className="btn btn-light mt-5 w-full">Talk to an expert</ApplyButton>
               </div>

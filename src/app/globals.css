@@ -72,6 +72,11 @@
   .on-dark .lead { @apply text-white/75; }
   .on-dark .stat { @apply text-heaven; }
 
+  /* A white card sitting inside a dark section: restore dark-on-light text for everything inside it */
+  .on-dark .surface-light .h1, .on-dark .surface-light .h2, .on-dark .surface-light .h3, .on-dark .surface-light .h4 { @apply text-champion; }
+  .on-dark .surface-light .eyebrow { @apply text-impact; }
+  .on-dark .surface-light .lead { @apply text-champion/80; }
+
   .section { @apply py-16 md:py-24; }
 
   .container {
@@ -109,6 +114,11 @@
 }
 
 @layer utilities {
+  /* keep the chatbot clear of the mobile action bar */
+  @media (max-width: 767px) {
+    .fc-fab { bottom: 84px !important; }
+    .fc-window { bottom: 152px !important; max-height: calc(100dvh - 176px) !important; }
+  }
   .marquee-track { animation: marquee 50s linear infinite; }
   .marquee:hover .marquee-track { animation-play-state: paused; }
   /* Left/right padding that lines a full-bleed scroller up with .container (80rem max) */

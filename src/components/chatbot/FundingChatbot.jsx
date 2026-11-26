@@ -401,6 +401,13 @@ export default function FundingChatbot({ data = fundingData }) {
   
 
   const [open, setOpen] = useState(false);
+
+  // Lets other parts of the site (e.g. the Solutions "Find my scheme" button) open the chatbot.
+  useEffect(() => {
+    const openBot = () => setOpen(true);
+    window.addEventListener("nextgen:open-chatbot", openBot);
+    return () => window.removeEventListener("nextgen:open-chatbot", openBot);
+  }, []);
   const [messages, setMessages] = useState([]);
   const [step, setStep] = useState(STEPS.GREETING);
   const [showContactUs, setShowContactUs] = useState(false);
@@ -1710,6 +1717,7 @@ export default function FundingChatbot({ data = fundingData }) {
 
       {open && (
         <div
+          className="fc-window"
           style={{
             position: "fixed",
             bottom: 92,

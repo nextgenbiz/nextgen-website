@@ -146,7 +146,7 @@ export default function AboutPage() {
           <ul className="mt-12 grid gap-5 md:grid-cols-2">
             {IMPACT.map((p, i) => (
               <Reveal key={p.title} as="li" delay={(i % 2) * 0.08} className="flex gap-5 rounded-2xl border border-line p-6 md:p-8">
-                <span className="text-stat !text-heaven shrink-0">0{i + 1}</span>
+                <span className="text-stat !text-impact/80 shrink-0">0{i + 1}</span>
                 <div>
                   <h3 className="h4">{p.title}</h3>
                   <p className="mt-2 text-[15px] text-champion/80">{p.description}</p>

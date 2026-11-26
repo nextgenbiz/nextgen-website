@@ -22,7 +22,7 @@ export default function Stats() {
               <dd className="mt-3 font-display text-[3.25rem] leading-none text-white md:text-6xl">
                 <CountUp to={s.to} decimals={s.decimals} suffix={s.suffix} />
               </dd>
-              <p className="mt-3 text-[15px] text-white/80">{s.note}</p>
+              <dd className="mt-3 text-[15px] text-white/80">{s.note}</dd>
             </div>
           ))}
         </dl>
