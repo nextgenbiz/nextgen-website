@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+@font-face { font-family: "Gilroy"; font-weight: 400; font-style: normal; font-display: swap; src: url("/fonts/Gilroy-Regular.woff2") format("woff2"); }
+@font-face { font-family: "Gilroy"; font-weight: 500; font-style: normal; font-display: swap; src: url("/fonts/Gilroy-Medium.woff2") format("woff2"); }
+@font-face { font-family: "Gilroy"; font-weight: 600; font-style: normal; font-display: swap; src: url("/fonts/Gilroy-SemiBold.woff2") format("woff2"); }
+@font-face { font-family: "Gilroy"; font-weight: 700; font-style: normal; font-display: swap; src: url("/fonts/Gilroy-Bold.woff2") format("woff2"); }
+@font-face { font-family: "Gilroy"; font-weight: 800; font-style: normal; font-display: swap; src: url("/fonts/Gilroy-ExtraBold.woff2") format("woff2"); }
+*/
+
+@layer base {
+  :root {
+    --header-h: 4.5rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 1.5rem);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-sans text-[15px] leading-[1.6] text-champion/80 antialiased md:text-base;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    @apply text-champion;
+    text-wrap: balance;
+  }
+  /* Gilroy ExtraBold carries the headlines (guideline: H1 + stats are 800) */
+  /* h2 gets Gilroy only via the .h2 class, so small card/column titles that are h2 elements stay regular */
+  h1 { @apply font-display; font-weight: 800; letter-spacing: -0.015em; }
+
+  ::selection {
+    @apply bg-impact text-white;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-impact;
+  }
+  .on-dark :focus-visible {
+    @apply outline-heaven;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Type scale (Brand Guidelines p.12) */
+  .h1 { @apply font-display text-h1 text-champion; letter-spacing: -0.015em; }
+  .h2 { @apply font-display text-h2 text-champion; font-weight: 800; letter-spacing: -0.01em; }
+  .h3 { @apply text-h3 text-champion; }
+  .h4 { @apply text-h4 text-champion; }
+  .lead { @apply text-base leading-[1.6] text-champion/80 md:text-lg; }
+  .stat { @apply font-display text-stat text-impact; }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.16em] text-impact md:text-[13px];
+  }
+  .on-dark .eyebrow { @apply text-heaven; }
+  .on-dark .h1, .on-dark .h2, .on-dark .h3, .on-dark .h4 { @apply text-white; }
+  .on-dark .lead { @apply text-white/75; }
+  .on-dark .stat { @apply text-heaven; }
+
+  .section { @apply py-16 md:py-24; }
+
+  .container {
+    @apply mx-auto w-full max-w-[80rem] px-5 md:px-8 xl:px-10;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold leading-none transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60 md:text-[15px];
+  }
+  .btn-primary { @apply bg-impact text-white hover:bg-impact-600; }
+  .btn-dark { @apply bg-champion text-white hover:bg-champion-700; }
+  .btn-light { @apply bg-white text-champion hover:bg-heaven-100; }
+  .btn-outline { @apply border border-champion/25 text-champion hover:border-champion hover:bg-champion hover:text-white; }
+  .btn-outline-light { @apply border border-white/35 text-white hover:border-white hover:bg-white hover:text-champion; }
+  .btn-lg { @apply px-7 py-4; }
+
+  /* Form fields */
+  .field {
+    @apply w-full rounded-xl border border-line bg-white px-4 py-3.5 text-[15px] text-champion placeholder:text-mute/70 transition focus:border-impact focus:outline-none focus:ring-4 focus:ring-impact/10;
+  }
+  select.field {
+    @apply h-[3.25rem] appearance-none py-0 pr-10;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235B6B85' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }
+  input.field { @apply h-[3.25rem] py-0; }
+  .field-error { @apply border-red-500 focus:border-red-500 focus:ring-red-500/10; }
+  .label { @apply mb-1.5 block text-sm font-medium text-champion; }
+
+  .card {
+    @apply rounded-2xl border border-line bg-white;
+  }
+}
+
+@layer utilities {
+  .marquee-track { animation: marquee 50s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  /* Left/right padding that lines a full-bleed scroller up with .container (80rem max) */
+  .edge-pad { padding-inline: 1.25rem; scroll-padding-inline: 1.25rem; }
+  @media (min-width: 768px) { .edge-pad { padding-inline: 2rem; scroll-padding-inline: 2rem; } }
+  @media (min-width: 1280px) {
+    .edge-pad {
+      padding-inline: calc((100% - 80rem) / 2 + 2.5rem);
+      scroll-padding-inline: calc((100% - 80rem) / 2 + 2.5rem);
+    }
+  }
+  .scrollbar-none { scrollbar-width: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+}
