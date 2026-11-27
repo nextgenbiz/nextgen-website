@@ -22,12 +22,12 @@ export function Section({ tone = "white", className, children, id, ...rest }) {
   );
 }
 
-export function SectionHeading({ eyebrow, title, lead, align = "left", className, as: Tag = "h2", children }) {
+export function SectionHeading({ eyebrow, title, lead, align = "left", className, leadClassName, as: Tag = "h2", children }) {
   return (
     <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center", className)}>
       {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
       <Tag className="h2">{title}</Tag>
-      {lead && <p className="lead mt-4">{lead}</p>}
+      {lead && <p className={cn("lead mt-4", leadClassName)}>{lead}</p>}
       {children}
     </div>
   );

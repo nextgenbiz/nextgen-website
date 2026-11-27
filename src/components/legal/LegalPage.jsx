@@ -12,11 +12,18 @@ export default function LegalPage({ title, lead, updated, sections, crumb, docNa
   const toc = sections.map((s) => ({ id: slugify(s.heading), label: s.heading }));
   return (
     <>
-      <PageHero eyebrow="Legal" title={title} lead={lead} crumbs={[{ label: crumb }]}>
-        {updated && <p className="mt-6 text-sm text-white/60">{updated}</p>}
+      <PageHero
+        eyebrow="Legal"
+        title={title}
+        lead={lead}
+        crumbs={[{ label: crumb }]}
+        image="/images/hero-legal.webp"
+        imageAlt="Modern glass corporate skyscraper representing corporate governance and transparency"
+      >
+        {updated && <p className="mt-5 text-sm text-mute">{updated}</p>}
       </PageHero>
       <Section>
-        <Container className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+        <Container className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
           <aside className="hidden lg:col-span-3 lg:block">
             <div className="sticky top-28">
               <p className="eyebrow mb-3">Contents</p>

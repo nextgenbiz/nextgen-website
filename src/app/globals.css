@@ -119,8 +119,9 @@
     .fc-fab { bottom: 84px !important; }
     .fc-window { bottom: 152px !important; max-height: calc(100dvh - 176px) !important; }
   }
-  .marquee-track { animation: marquee 50s linear infinite; }
+  .marquee-track { animation: marquee 60s linear infinite; }
   .marquee:hover .marquee-track { animation-play-state: paused; }
+  @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
   /* Left/right padding that lines a full-bleed scroller up with .container (80rem max) */
   .edge-pad { padding-inline: 1.25rem; scroll-padding-inline: 1.25rem; }
   @media (min-width: 768px) { .edge-pad { padding-inline: 2rem; scroll-padding-inline: 2rem; } }
@@ -132,4 +133,10 @@
   }
   .scrollbar-none { scrollbar-width: none; }
   .scrollbar-none::-webkit-scrollbar { display: none; }
+}
+
+/* Open Peeps are cropped at the waist: fade the bottom edge so they dissolve instead of looking cut off */
+.peep-fade {
+  -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 97%);
+  mask-image: linear-gradient(to bottom, #000 68%, transparent 97%);
 }

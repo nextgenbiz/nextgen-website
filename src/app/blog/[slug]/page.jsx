@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Clock } from "lucide-react";
+import { ArrowRight, Clock } from "@/components/ui/icons";
 import PageHero from "@/components/ui/PageHero";
 import PageToc from "@/components/ui/PageToc";
 import { Container, Section } from "@/components/ui/Section";
@@ -93,18 +93,20 @@ export default async function BlogPostPage({ params }) {
         eyebrow={blog.category}
         title={title}
         crumbs={[{ label: "Blog", href: "/blog" }, { label: title }]}
+        image={blog.image}
+        imageAlt={title}
       >
-        <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-white/70">
+        <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-mute">
           <span>{blog.author?.name}</span>
           <span aria-hidden="true">·</span>
           <span>{blog.date}</span>
           <span aria-hidden="true">·</span>
-          <span className="inline-flex items-center gap-1"><Clock className="h-3.5 w-3.5" />{readingMinutes(blog)} min read</span>
+          <span data-icon-trigger className="inline-flex items-center gap-1"><Clock className="h-3.5 w-3.5" />{readingMinutes(blog)} min read</span>
         </p>
       </PageHero>
 
       <Section>
-        <Container className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+        <Container className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:hidden">
             <PageToc items={toc} orientation="horizontal" />
           </div>

@@ -19,6 +19,8 @@ export default function EventsPage() {
         title="Celebrations & events."
         lead="Festivals, tournaments and team moments that reflect our values, teamwork and vibrant work culture."
         crumbs={[{ label: "Our Story", href: "/about" }, { label: "Events" }]}
+        image="/images/hero-events.webp"
+        imageAlt="NextGen team members celebrating a company milestone together"
       />
       <Section>
         <Container>

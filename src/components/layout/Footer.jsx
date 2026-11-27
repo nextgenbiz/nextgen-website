@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "@/components/ui/icons";
 import Logo from "@/components/ui/Logo";
 import { MotifMark } from "@/components/ui/Motif";
 import { FOOTER_NOTICE, NAV, OFFICES, SITE } from "@/lib/site";
@@ -90,15 +90,15 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.14em] text-white">Contact</h2>
             <ul className="space-y-3.5 text-[15px]">
-              <li className="flex gap-3">
+              <li data-icon-trigger className="flex gap-3">
                 <MapPin className="mt-0.5 h-[18px] w-[18px] shrink-0 text-heaven" aria-hidden="true" />
                 <address className="not-italic leading-relaxed">{head.address}</address>
               </li>
-              <li className="flex gap-3">
+              <li data-icon-trigger className="flex gap-3">
                 <Mail className="mt-0.5 h-[18px] w-[18px] shrink-0 text-heaven" aria-hidden="true" />
                 <a href={`mailto:${SITE.email}`} className="[overflow-wrap:anywhere] hover:text-white">{SITE.email}</a>
               </li>
-              <li className="flex gap-3">
+              <li data-icon-trigger className="flex gap-3">
                 <Phone className="mt-0.5 h-[18px] w-[18px] shrink-0 text-heaven" aria-hidden="true" />
                 <a href={SITE.phoneHref} className="hover:text-white">{SITE.phone}</a>
               </li>

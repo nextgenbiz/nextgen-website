@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Check, FileText, ListChecks, MessageCircleQuestion, Route } from "lucide-react";
+import { ArrowRight, Check, FileText, ListChecks, MessageCircleQuestion, Route } from "@/components/ui/icons";
 import PageHero from "@/components/ui/PageHero";
 import PageToc from "@/components/ui/PageToc";
 import Accordion from "@/components/ui/Accordion";
@@ -56,6 +56,12 @@ export default async function ServicePage({ params }) {
   const c = b.content || {};
   const meta = SERVICES.find((s) => s.slug === slug);
   const category = CATEGORIES.find((x) => x.value === meta?.category);
+  const SERVICE_HERO_IMAGES = {
+    registration: "/images/service-registration.webp",
+    compliance: "/images/service-compliance.webp",
+    funding: "/images/service-funding.webp",
+  };
+  const heroImage = SERVICE_HERO_IMAGES[meta?.category] || "/images/service-compliance.webp";
   const url = `${SITE.url}/service/${slug}`;
   const similar = (b.sidesimilarites || []).map(resolveSimilar).filter((s) => s && s.slug !== slug);
   const docs = c.documentsRequiredDetailed || b.documentsRequired;
@@ -105,16 +111,18 @@ export default async function ServicePage({ params }) {
         title={b.bigtitlle}
         lead={b.description}
         crumbs={[{ label: "Solutions", href: "/solution" }, { label: b.title }]}
+        image={heroImage}
+        imageAlt={b.title}
       >
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <ApplyButton service={b.title} className="btn btn-light btn-lg">
+          <ApplyButton service={b.title} className="btn btn-primary btn-lg">
             Get started with {b.title.replace(/\s*\(.*\)/, "")} <ArrowRight className="h-4 w-4" />
           </ApplyButton>
         </div>
       </PageHero>
 
       {glance.length > 0 && (
-        <Container className="relative z-10 -mt-8 md:-mt-10">
+        <Container className="relative z-10 mt-8 md:mt-10">
           <ul className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
             {glance.map((g) => {
               const Icon = g.icon;
@@ -137,7 +145,7 @@ export default async function ServicePage({ params }) {
       )}
 
       <section className="section !pt-12 md:!pt-16">
-        <Container className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+        <Container className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
           {/* mobile: horizontal chips */}
           <div className="lg:hidden">
             <PageToc items={toc} orientation="horizontal" />
@@ -190,7 +198,7 @@ export default async function ServicePage({ params }) {
                   {c.keybenefits.map((point, i) => {
                     const { label, body } = splitBenefit(point);
                     return (
-                      <li key={i} className="rounded-2xl border border-line bg-white p-5">
+                      <li key={i} data-icon-trigger className="rounded-2xl border border-line bg-white p-5">
                         <span className="mb-3 grid h-7 w-7 place-items-center rounded-full bg-impact-50 text-impact">
                           <Check className="h-4 w-4" aria-hidden="true" />
                         </span>

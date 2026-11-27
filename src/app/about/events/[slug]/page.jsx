@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "@/components/ui/icons";
 import PageHero from "@/components/ui/PageHero";
 import { Container, Section } from "@/components/ui/Section";
 import Gallery from "@/components/about/Gallery";
@@ -38,10 +38,12 @@ export default async function EventPage({ params }) {
         title={
           <>
             {event.title}
-            <span className="block text-heaven">{event.subtitle}</span>
+            <span className="block text-impact">{event.subtitle}</span>
           </>
         }
         crumbs={[{ label: "Our Story", href: "/about" }, { label: "Events", href: "/about/events" }, { label: event.title }]}
+        image={images[0]?.src || "/images/hero-events.webp"}
+        imageAlt={`${event.title} celebrations at NextGen`}
       />
       <Section>
         <Container>

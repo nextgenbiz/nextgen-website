@@ -5,7 +5,7 @@ export const blogs = [
  {
     slug: "How-to-get-an-MSMEs-loan-For-Your-Business",
     title: "How to Get an MSME Loan For Your Business ",
-     image: "/Frame1.png",
+     image: "/images/blog-msme-loan.webp",
     date: "Sept 26,2025",
     publishedDate: "2025-09-01",
     modifiedDate: "2025-09-01",
@@ -83,7 +83,7 @@ export const blogs = [
    {
     slug: "Complete-Guide-to-DPIIT-Startup-Recognition-in-India",
     title: "Complete Guide to DPIIT Startup Recognition in India",
-     image: "/dpiitbanner.png",
+     image: "/images/blog-dpiit-startup.webp",
     date: "Sept 26,2025",
     publishedDate: "2025-09-01",
     modifiedDate: "2025-09-01",
@@ -152,7 +152,7 @@ export const blogs = [
    {
     slug: "Top-Government-Grants-for-MSMEs-in-India-2026",
     title: "Top Government Grants for MSMEs in India 2026",
-     image: "/govtbanner.png",
+     image: "/images/blog-govt-grants.webp",
     date: "Sept 26,2025",
     publishedDate: "2025-09-01",
     modifiedDate: "2025-09-01",
@@ -220,7 +220,7 @@ export const blogs = [
    {
     slug: "How-to-Prepare-a-Winning-Pitch-Deck-for-Investors-in-India-(2026-Guide)",
     title: "How to Prepare a Winning Pitch Deck for Investors in India (2026 Guide)",
-     image: "/deckbanner.png",
+     image: "/images/hero-solutions.webp",
     date: "Sept 26,2025",
     publishedDate: "2025-09-01",
     modifiedDate: "2025-09-01",

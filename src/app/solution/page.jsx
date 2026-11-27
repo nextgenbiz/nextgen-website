@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@/components/ui/icons";
 import PageHero from "@/components/ui/PageHero";
 import { Container, Section, SectionHeading } from "@/components/ui/Section";
 import ServiceExplorer from "@/components/solution/ServiceExplorer";
@@ -76,18 +76,19 @@ export default function SolutionPage() {
           <>
             Funding solutions
             <br />
-            <span className="text-heaven">for every business.</span>
+            <span className="text-impact">for every business.</span>
           </>
         }
         lead="From startups to established enterprises, we provide comprehensive funding solutions across all business categories with expert guidance and support."
         crumbs={[{ label: "Solutions" }]}
-        size="lg"
+        image="/images/hero-solutions.webp"
+        imageAlt="Indian entrepreneur and financial strategist reviewing growth and funding plans"
       >
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Link href="/contact" className="btn btn-light btn-lg">
+          <Link href="/contact" className="btn btn-primary btn-lg">
             Get funding now <ArrowRight className="h-4 w-4" />
           </Link>
-          <ApplyButton service="Expert Consultation" className="btn btn-outline-light btn-lg">
+          <ApplyButton service="Expert Consultation" className="btn btn-outline btn-lg">
             Expert consultation
           </ApplyButton>
         </div>

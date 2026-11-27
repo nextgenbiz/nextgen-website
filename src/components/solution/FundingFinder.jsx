@@ -1,8 +1,8 @@
 "use client";
 
-import { Search } from "lucide-react";
+import { Search } from "@/components/ui/icons";
 import { Container, Section } from "@/components/ui/Section";
-import { FundingScene } from "@/components/illustrations";
+import { PopPair } from "@/components/illustrations/PeepScene";
 
 /** Opens the UdyamMitra funding-finder chatbot (loaded globally in the layout). */
 export default function FundingFinder() {
@@ -33,7 +33,7 @@ export default function FundingFinder() {
           </button>
         </div>
         <div className="lg:col-span-6">
-          <FundingScene className="mx-auto w-full max-w-md" />
+          <PopPair peeps={[101, 27]} className="mx-auto" />
         </div>
       </Container>
     </Section>

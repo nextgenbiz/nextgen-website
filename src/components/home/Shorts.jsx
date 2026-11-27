@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play } from "@/components/ui/icons";
 import { Container, Section } from "@/components/ui/Section";
 import { SHORTS } from "@/data/content";
 

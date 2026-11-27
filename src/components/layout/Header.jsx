@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Phone, X } from "lucide-react";
+import { Menu, Phone, X } from "@/components/ui/icons";
 import Logo from "@/components/ui/Logo";
 import { MotifMark } from "@/components/ui/Motif";
 import { useContactModal } from "@/components/forms/ContactModalProvider";
@@ -11,22 +11,13 @@ import { NAV, SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 /**
- * Fixed header. Every page opens with a dark hero, so the header starts transparent
- * with the white logo and switches to a solid white bar with the full-colour logo
- * as soon as the page scrolls (guideline: right logo, right background).
+ * Fixed header: a white bar with the full-colour logo on every page (guideline: right logo, right background).
+ * While the mobile drawer is open it turns Champion Blue with the white logo.
  */
 export default function Header() {
   const pathname = usePathname();
   const { open } = useContactModal();
-  const [scrolled, setScrolled] = useState(false);
   const [menu, setMenu] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // close the drawer on navigation
   useEffect(() => setMenu(false), [pathname]);
@@ -41,7 +32,8 @@ export default function Header() {
     };
   }, [menu]);
 
-  const solid = scrolled || menu;
+  // every page opens on a white hero, so the bar is white everywhere; only the open mobile drawer is dark
+  const solid = !menu;
   const isActive = (href) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
   return (
@@ -49,11 +41,11 @@ export default function Header() {
       <header
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,border-color] duration-300",
-          solid ? "border-b border-line bg-white/95 backdrop-blur" : "border-b border-transparent bg-transparent"
+          solid ? "border-b border-line bg-white/95 backdrop-blur" : "border-b border-transparent bg-champion"
         )}
       >
         <div className="container flex h-[4.5rem] items-center justify-between gap-6">
-          <Logo variant={solid && !menu ? "color" : "white"} width={142} priority />
+          <Logo variant={solid ? "color" : "white"} width={142} priority />
 
           <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
             {NAV.map((item) => {

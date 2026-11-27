@@ -72,6 +72,7 @@ const nextConfig = {
       { source: "/fonts/(.*)", headers: [immutable] },
       { source: "/brand/(.*)", headers: [immutable] },
       { source: "/assets/(.*)", headers: [immutable] },
+      { source: "/images/(.*)", headers: [immutable] },
     ];
   },
 };

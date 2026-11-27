@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "@/components/ui/icons";
 import { EVENTS, getCover } from "@/data/events";
 
 /** Grid of celebration / event cards (used on About and the events index). */

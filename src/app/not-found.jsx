@@ -17,11 +17,10 @@ export default function NotFound() {
         eyebrow="Error 404"
         title="That page took a wrong turn."
         lead="The page you're looking for doesn't exist or has moved. Let's get you back on track."
-        size="lg"
       >
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Link href="/" className="btn btn-light btn-lg">Back to home</Link>
-          <Link href="/contact" className="btn btn-outline-light btn-lg">Talk to us</Link>
+          <Link href="/" className="btn btn-primary btn-lg">Back to home</Link>
+          <Link href="/contact" className="btn btn-outline btn-lg">Talk to us</Link>
         </div>
       </PageHero>
       <section className="section">

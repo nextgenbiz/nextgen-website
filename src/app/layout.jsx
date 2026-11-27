@@ -8,6 +8,7 @@ import ContactModalProvider from "@/components/forms/ContactModalProvider";
 import ChatbotLoader from "@/components/chatbot/ChatbotLoader";
 import MobileActionBar from "@/components/layout/MobileActionBar";
 import JsonLd from "@/components/seo/JsonLd";
+import { PopClipDefs } from "@/components/illustrations/PeepScene";
 import { SITE } from "@/lib/site";
 
 // Brand display face: Gilroy ExtraBold (800) for headlines and key numbers, per the brand guideline.
@@ -132,7 +133,7 @@ const professionalServiceLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${standIn.variable} ${gilroy.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth" className={`${standIn.variable} ${gilroy.variable}`}>
       <head>
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
@@ -140,6 +141,7 @@ export default function RootLayout({ children }) {
         <JsonLd data={professionalServiceLd} />
       </head>
       <body>
+        <PopClipDefs />
         <a
           href="#main"
           className="sr-only z-[100] rounded-full bg-white px-5 py-3 font-semibold text-champion shadow-lift focus:not-sr-only focus:fixed focus:left-4 focus:top-4"

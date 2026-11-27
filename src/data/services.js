@@ -18,7 +18,7 @@ import {
   HandCoins,
   BriefcaseBusiness,
   TrendingUp,
-} from "lucide-react";
+} from "@/components/ui/icons";
 import { businessTypes } from "./businessData";
 
 export { businessTypes };

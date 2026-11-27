@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "@/components/ui/icons";
 
 /** Masonry-style gallery with an accessible lightbox. images: [{ src, width, height }] */
 export default function Gallery({ images, title }) {

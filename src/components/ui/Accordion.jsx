@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
-import { Plus } from "lucide-react";
+import { Plus } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 
 /** Accessible single-open accordion. items: [{ question, answer }] */

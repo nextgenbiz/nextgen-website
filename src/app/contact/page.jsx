@@ -1,12 +1,11 @@
 import Link from "next/link";
 import Script from "next/script";
-import { ChevronRight, Clock, Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
+import { ChevronRight, Clock, Mail, MapPin, Phone, ArrowUpRight } from "@/components/ui/icons";
 import { Container, Section } from "@/components/ui/Section";
 import ContactFormCard from "@/components/forms/ContactFormCard";
 import CtaBand from "@/components/home/CtaBand";
 import JsonLd, { breadcrumbLd } from "@/components/seo/JsonLd";
-import { MotifBackdrop } from "@/components/ui/Motif";
-import { SupportScene } from "@/components/illustrations";
+import { PopPair } from "@/components/illustrations/PeepScene";
 import { OFFICES, SITE } from "@/lib/site";
 
 const ogTitle = "Get in Touch | Expert Business Support at NextGen Consultancy";
@@ -34,20 +33,20 @@ export const metadata = {
 
 function ContactDetails() {
   const rows = [
-    { icon: Phone, label: "Call us", node: <a href={SITE.phoneHref} className="hover:text-heaven">{SITE.phone}</a> },
-    { icon: Mail, label: "Email", node: <a href={`mailto:${SITE.email}`} className="[overflow-wrap:anywhere] hover:text-heaven">{SITE.email}</a> },
+    { icon: Phone, label: "Call us", node: <a href={SITE.phoneHref} className="hover:text-impact">{SITE.phone}</a> },
+    { icon: Mail, label: "Email", node: <a href={`mailto:${SITE.email}`} className="[overflow-wrap:anywhere] hover:text-impact">{SITE.email}</a> },
     { icon: Clock, label: "Working hours", node: <span>{SITE.hours}</span> },
   ];
   return (
     <ul className="space-y-5">
       {rows.map(({ icon: Icon, label, node }) => (
-        <li key={label} className="flex items-center gap-4">
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white/10 text-heaven">
+        <li key={label} data-icon-trigger className="flex items-center gap-4">
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-impact-50 text-impact">
             <Icon className="h-5 w-5" aria-hidden="true" />
           </span>
           <div>
-            <p className="text-sm text-white/60">{label}</p>
-            <p className="text-lg font-semibold text-white">{node}</p>
+            <p className="text-sm text-mute">{label}</p>
+            <p className="text-lg font-semibold text-champion">{node}</p>
           </div>
         </li>
       ))}
@@ -75,31 +74,26 @@ export default function ContactPage() {
         On desktop: headline + illustration on the left, form on the right, brand circles bleeding
         behind the card (Swiss-poster style asymmetry).
       */}
-      <section className="on-dark relative overflow-hidden bg-champion">
-        <div aria-hidden="true" className="pointer-events-none absolute -right-44 -top-16 hidden h-[135%] w-[50rem] lg:block">
-          <MotifBackdrop />
-        </div>
-
-        <Container className="relative grid gap-x-14 gap-y-8 pb-14 pt-28 md:pt-32 lg:grid-cols-12 lg:pb-16">
-          {/* 1. headline (+ illustration on desktop) */}
+      <section className="relative border-b border-line bg-white">
+        <Container className="relative grid gap-x-14 gap-y-8 pb-12 pt-24 md:pt-32 lg:grid-cols-12 lg:pb-16">
+          {/* 1. headline (+ art on desktop) */}
           <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1">
             <nav aria-label="Breadcrumb" className="mb-5">
-              <ol className="flex items-center gap-1.5 text-[13px] text-white/60">
-                <li><Link href="/" className="hover:text-white">Home</Link></li>
+              <ol className="flex items-center gap-1.5 text-[13px] text-mute">
+                <li><Link href="/" className="hover:text-impact">Home</Link></li>
                 <li className="flex items-center gap-1.5">
-                  <ChevronRight className="h-3.5 w-3.5" />
-                  <span className="text-white/90" aria-current="page">Contact</span>
+                  <ChevronRight animated={false} className="h-3.5 w-3.5" />
+                  <span className="text-champion" aria-current="page">Contact</span>
                 </li>
               </ol>
             </nav>
             <p className="eyebrow mb-3">Contact</p>
-            <h1 className="h1 !text-[2.25rem] md:!text-[2.875rem]">
-              Let&apos;s build something <span className="text-heaven">great together.</span>
+            <h1 className="h1 !text-[2.15rem] !leading-[1.1] md:!text-[3rem]">
+              Let&apos;s build something <span className="text-impact">great together.</span>
             </h1>
             <p className="lead mt-4 max-w-md">
               Partner with industry experts who deliver innovative solutions tailored to your unique business needs.
             </p>
-            <SupportScene className="mt-8 hidden w-full max-w-[19rem] lg:block" />
           </div>
 
           {/* 2. the form: right column on desktop, right after the headline on phones */}
@@ -107,10 +101,10 @@ export default function ContactPage() {
             <ContactFormCard />
           </div>
 
-          {/* 3. details (+ illustration on tablet/phone, where it would otherwise push the form down) */}
+          {/* 3. contact details, and the two people on desktop */}
           <div className="lg:col-span-5 lg:col-start-1 lg:row-start-2 lg:self-end">
             <ContactDetails />
-            <SupportScene className="mx-auto mt-10 w-full max-w-[17rem] lg:hidden" />
+            <PopPair peeps={[102, 28]} className="mt-10 hidden lg:block" />
           </div>
         </Container>
       </section>
@@ -123,7 +117,7 @@ export default function ContactPage() {
 
           <ul className="mt-12 grid gap-5 md:grid-cols-3">
             {OFFICES.map((o) => (
-              <li key={o.title} className="card flex flex-col p-7">
+              <li key={o.title} data-icon-trigger className="card flex flex-col p-7">
                 <span className="grid h-11 w-11 place-items-center rounded-full bg-impact text-white"><MapPin className="h-5 w-5" /></span>
                 <p className="mt-6 text-xs font-semibold uppercase tracking-[0.14em] text-impact">{o.city}</p>
                 <h3 className="mt-1 text-h4 font-semibold">{o.title}</h3>

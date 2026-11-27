@@ -1,8 +1,8 @@
 "use client";
 
 import { useId, useState } from "react";
-import { ArrowRight, Loader2 } from "lucide-react";
-import { SuccessBurst } from "@/components/illustrations";
+import { ArrowRight, Loader2 } from "@/components/ui/icons";
+import { PopPeep } from "@/components/illustrations/PeepScene";
 import { INDIAN_STATES } from "@/lib/site";
 import { submitLead, validateLead } from "@/lib/leads";
 import { cn } from "@/lib/utils";
@@ -100,8 +100,8 @@ export default function LeadForm({
   if (status.done) {
     return (
       <div className={cn("py-10 text-center", className)} role="status">
-        <SuccessBurst className="mx-auto w-44 animate-rise" />
-        <h3 className="h3 mt-2">Thank you, we&apos;ve got it.</h3>
+        <PopPeep id={90} className="mx-auto mt-6 w-28 animate-rise" />
+        <h3 className="h3 mt-5">Thank you, we&apos;ve got it.</h3>
         <p className="mx-auto mt-2 max-w-sm text-champion/80">
           Our team will contact you shortly on the number you shared.
         </p>

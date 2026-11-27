@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, Clock } from "lucide-react";
+import { ArrowUpRight, Clock } from "@/components/ui/icons";
 import PageHero from "@/components/ui/PageHero";
 import { Container, Section } from "@/components/ui/Section";
 import CtaBand from "@/components/home/CtaBand";
@@ -41,7 +41,7 @@ function Meta({ blog }) {
       <span aria-hidden="true">·</span>
       <span>{blog.date}</span>
       <span aria-hidden="true">·</span>
-      <span className="inline-flex items-center gap-1"><Clock className="h-3.5 w-3.5" />{readingMinutes(blog)} min read</span>
+      <span data-icon-trigger className="inline-flex items-center gap-1"><Clock className="h-3.5 w-3.5" />{readingMinutes(blog)} min read</span>
     </p>
   );
 }
@@ -84,19 +84,21 @@ export default function BlogIndex() {
           <>
             Business insights
             <br />
-            <span className="text-heaven">for founders.</span>
+            <span className="text-impact">for founders.</span>
           </>
         }
         lead="Expert-written guides on startups, MSME growth, funding, compliance and business strategy."
         crumbs={[{ label: "Blog" }]}
+        image="/images/hero-blog.webp"
+        imageAlt="Modern editorial workspace with strategy journal and laptop"
       />
 
       <Section>
         <Container>
           {featured && (
             <Link href={`/blog/${featured.slug}`} className="group grid gap-6 overflow-hidden rounded-3xl border border-line bg-white md:grid-cols-2">
-              <div className="relative aspect-[1280/650] bg-surface md:aspect-auto md:min-h-[20rem]">
-                <Image src={featured.image} alt="" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover object-left transition duration-500 group-hover:scale-105" priority />
+              <div className="relative aspect-[16/9] bg-surface md:aspect-auto md:min-h-[20rem]">
+                <Image src={featured.image} alt={featured.title.trim()} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover object-center transition duration-500 group-hover:scale-105" priority />
               </div>
               <div className="flex flex-col justify-center p-6 md:p-10">
                 <Meta blog={featured} />
@@ -114,8 +116,8 @@ export default function BlogIndex() {
               {rest.map((b) => (
                 <li key={b.slug}>
                   <Link href={`/blog/${b.slug}`} className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white transition hover:-translate-y-1 hover:shadow-lift">
-                    <div className="relative aspect-[1280/650] bg-surface">
-                      <Image src={b.image} alt="" fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover object-left transition duration-500 group-hover:scale-105" />
+                    <div className="relative aspect-[16/9] bg-surface">
+                      <Image src={b.image} alt={b.title.trim()} fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover object-center transition duration-500 group-hover:scale-105" />
                     </div>
                     <div className="flex flex-1 flex-col p-6">
                       <Meta blog={b} />

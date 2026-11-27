@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star } from "@/components/ui/icons";
 import { Container, Section } from "@/components/ui/Section";
 import { REVIEWS } from "@/data/reviews";
 import { cn } from "@/lib/utils";
@@ -23,7 +23,7 @@ function ReviewCard({ review }) {
   return (
     <figure className="card flex h-full w-[84vw] max-w-[24rem] shrink-0 snap-start flex-col p-6 md:w-[24rem] md:p-7">
       <div className="flex items-center justify-between">
-        <div className="flex gap-0.5" role="img" aria-label="5 out of 5 stars">
+        <div data-icon-trigger className="flex gap-0.5" role="img" aria-label="5 out of 5 stars">
           {Array.from({ length: 5 }).map((_, i) => (
             <Star key={i} className="h-4 w-4 fill-[#F5B301] text-[#F5B301]" aria-hidden="true" />
           ))}

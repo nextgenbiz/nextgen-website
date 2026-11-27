@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
-import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Loader2 } from "@/components/ui/icons";
 import { submitLead, validateLead } from "@/lib/leads";
 import { cn } from "@/lib/utils";
 
@@ -32,7 +32,7 @@ export default function QuickForm({ context = "Free consultation (website)", cla
 
   if (status.done) {
     return (
-      <div role="status" className="flex items-center gap-3 rounded-2xl bg-white/10 p-5 text-white">
+      <div role="status" data-icon-trigger className="flex items-center gap-3 rounded-2xl bg-white/10 p-5 text-white">
         <CheckCircle2 className="h-6 w-6 shrink-0 text-heaven" />
         <p className="font-medium">Thank you! We will contact you shortly.</p>
       </div>

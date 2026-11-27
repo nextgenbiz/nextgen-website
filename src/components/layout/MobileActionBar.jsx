@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MessageSquareText, Phone } from "lucide-react";
+import { MessageSquareText, Phone } from "@/components/ui/icons";
 import { useContactModal } from "@/components/forms/ContactModalProvider";
 import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";

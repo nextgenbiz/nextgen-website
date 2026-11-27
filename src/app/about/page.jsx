@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@/components/ui/icons";
 import PageHero from "@/components/ui/PageHero";
 import { Container, Section, SectionHeading } from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
@@ -49,18 +49,19 @@ export default function AboutPage() {
           <>
             Transforming business dreams
             <br />
-            <span className="text-heaven">into reality.</span>
+            <span className="text-impact">into reality.</span>
           </>
         }
         lead="Revolutionizing consultancy with breakthrough AI technology. We transform visionary ideas into tangible success stories that reshape industries."
         crumbs={[{ label: "Our Story" }]}
-        size="lg"
+        image="/images/hero-about.webp"
+        imageAlt="NextGen Business Consultancy leadership team collaborating in a glass corporate corridor"
       >
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Link href="/contact" className="btn btn-light btn-lg">
+          <Link href="/contact" className="btn btn-primary btn-lg">
             Begin journey <ArrowRight className="h-4 w-4" />
           </Link>
-          <Link href="/solution" className="btn btn-outline-light btn-lg">View services</Link>
+          <Link href="/solution" className="btn btn-outline btn-lg">View services</Link>
         </div>
       </PageHero>
 
@@ -141,9 +142,22 @@ export default function AboutPage() {
 
       {/* impact */}
       <Section>
-        <Container>
-          <SectionHeading eyebrow="Impact" title="Beyond business, toward legacy." />
-          <ul className="mt-12 grid gap-5 md:grid-cols-2">
+        <Container className="grid gap-12 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-5">
+            <div className="lg:sticky lg:top-32">
+              <SectionHeading eyebrow="Impact" title="Beyond business, toward legacy." />
+              <div className="relative mt-8 aspect-[16/10] overflow-hidden rounded-2xl border border-line bg-surface shadow-card">
+                <Image
+                  src="/images/service-funding.webp"
+                  alt="Long-term partnership between startup founders and NextGen advisors"
+                  fill
+                  sizes="(min-width: 1024px) 38vw, 100vw"
+                  className="object-cover object-center"
+                />
+              </div>
+            </div>
+          </div>
+          <ul className="grid gap-5 sm:grid-cols-2 lg:col-span-7 lg:grid-cols-1">
             {IMPACT.map((p, i) => (
               <Reveal key={p.title} as="li" delay={(i % 2) * 0.08} className="flex gap-5 rounded-2xl border border-line p-6 md:p-8">
                 <span className="text-stat !text-impact/80 shrink-0">0{i + 1}</span>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container, Section } from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
 import { PRINCIPLES } from "@/data/content";
@@ -14,6 +15,15 @@ export default function Principles() {
             <p className="lead mt-4">
               We don&apos;t just advise; we co-create, building businesses like co-founders, not outside consultants.
             </p>
+            <div className="relative mt-8 aspect-[16/10] overflow-hidden rounded-2xl border border-line bg-white shadow-card">
+              <Image
+                src="/images/hero-solutions.webp"
+                alt="Founder and NextGen strategist co-creating a business growth roadmap"
+                fill
+                sizes="(min-width: 1024px) 38vw, 100vw"
+                className="object-cover object-center"
+              />
+            </div>
           </div>
         </div>
 
