@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
+import useAutoScroll from "@/lib/useAutoScroll";
 import { ChevronLeft, ChevronRight, Play } from "@/components/ui/icons";
 import { Container, Section } from "@/components/ui/Section";
 import { SHORTS } from "@/data/content";
@@ -8,7 +9,7 @@ import { SHORTS } from "@/data/content";
 function Short({ id, index }) {
   const [playing, setPlaying] = useState(false);
   return (
-    <div className="relative aspect-[9/16] w-[62vw] max-w-[17rem] shrink-0 snap-start overflow-hidden rounded-3xl bg-champion-800 md:w-[17rem]">
+    <div className="relative aspect-[9/16] w-[62vw] max-w-[17rem] shrink-0 overflow-hidden rounded-3xl bg-champion-800 md:w-[17rem]">
       {playing ? (
         <iframe
           src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&playsinline=1&rel=0&modestbranding=1`}
@@ -32,8 +33,8 @@ function Short({ id, index }) {
 }
 
 export default function Shorts() {
-  const track = useRef(null);
-  const scrollBy = (d) => track.current?.scrollBy({ left: d * 300, behavior: "smooth" });
+  const { ref, loopRef, nudge } = useAutoScroll({ speed: 34 });
+  const scrollBy = (d) => nudge(d, 300);
   return (
     <Section>
       <Container>
@@ -52,12 +53,20 @@ export default function Shorts() {
           </div>
         </div>
       </Container>
-      <div
-        ref={track}
-        className="scrollbar-none edge-pad mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth"
-      >
-        {SHORTS.map((id, i) => (
-          <Short key={id} id={id} index={i} />
+      {/* endless auto-scroll (pauses on hover/touch and while a video plays); only the first copy is exposed to assistive tech */}
+      <div ref={ref} role="region" aria-label="Nextgen videos" className="scrollbar-none edge-pad mt-10 flex overflow-x-auto">
+        {[0, 1, 2].map((copy) => (
+          <div
+            key={copy}
+            ref={copy === 0 ? loopRef : undefined}
+            inert={copy > 0}
+            aria-hidden={copy > 0 ? "true" : undefined}
+            className="flex shrink-0 gap-4 pr-4"
+          >
+            {SHORTS.map((id, i) => (
+              <Short key={id} id={id} index={i} />
+            ))}
+          </div>
         ))}
       </div>
     </Section>

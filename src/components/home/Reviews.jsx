@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
+import useAutoScroll from "@/lib/useAutoScroll";
 import { ChevronLeft, ChevronRight, Star } from "@/components/ui/icons";
 import { Container, Section } from "@/components/ui/Section";
 import { REVIEWS } from "@/data/reviews";
@@ -21,7 +22,7 @@ function ReviewCard({ review }) {
   const [expanded, setExpanded] = useState(false);
   const long = review.text.length > 220;
   return (
-    <figure className="card flex h-full w-[84vw] max-w-[24rem] shrink-0 snap-start flex-col p-6 md:w-[24rem] md:p-7">
+    <figure className="card flex h-full w-[84vw] max-w-[24rem] shrink-0 flex-col p-6 md:w-[24rem] md:p-7">
       <div className="flex items-center justify-between">
         <div data-icon-trigger className="flex gap-0.5" role="img" aria-label="5 out of 5 stars">
           {Array.from({ length: 5 }).map((_, i) => (
@@ -54,12 +55,8 @@ function ReviewCard({ review }) {
 }
 
 export default function Reviews() {
-  const track = useRef(null);
-  const scrollBy = (dir) => {
-    const el = track.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * Math.min(el.clientWidth * 0.85, 400), behavior: "smooth" });
-  };
+  const { ref, loopRef, nudge } = useAutoScroll({ speed: 38 });
+  const scrollBy = (dir) => nudge(dir, 400);
 
   return (
     <Section tone="surface" id="reviews">
@@ -86,15 +83,25 @@ export default function Reviews() {
         </div>
       </Container>
 
+      {/* endless auto-scroll: three identical copies, only the first is exposed to assistive tech and the keyboard */}
       <div
-        ref={track}
-        tabIndex={0}
+        ref={ref}
         role="region"
         aria-label="Client reviews"
-        className="scrollbar-none edge-pad mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 md:gap-5"
+        className="scrollbar-none edge-pad mt-10 flex overflow-x-auto pb-2"
       >
-        {REVIEWS.map((r) => (
-          <ReviewCard key={r.name} review={r} />
+        {[0, 1, 2].map((copy) => (
+          <div
+            key={copy}
+            ref={copy === 0 ? loopRef : undefined}
+            inert={copy > 0}
+            aria-hidden={copy > 0 ? "true" : undefined}
+            className="flex shrink-0 gap-4 pr-4 md:gap-5 md:pr-5"
+          >
+            {REVIEWS.map((r) => (
+              <ReviewCard key={r.name} review={r} />
+            ))}
+          </div>
         ))}
       </div>
     </Section>

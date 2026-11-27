@@ -119,6 +119,8 @@
     .fc-fab { bottom: 84px !important; }
     .fc-window { bottom: 152px !important; max-height: calc(100dvh - 176px) !important; }
   }
+  /* keyframes live here (not only in tailwind.config) so they are always emitted, even without an animate-* class */
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .marquee-track { animation: marquee 60s linear infinite; }
   .marquee:hover .marquee-track { animation-play-state: paused; }
   @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
