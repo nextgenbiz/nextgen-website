@@ -56,7 +56,7 @@ export default function Header() {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "relative rounded-full px-4 py-2 text-[15px] font-medium transition-colors",
+                    "relative whitespace-nowrap rounded-full px-2.5 py-2 text-[15px] font-medium transition-colors xl:px-4",
                     solid ? "text-champion hover:text-impact" : "text-white/85 hover:text-white",
                     active && (solid ? "text-impact" : "text-white")
                   )}
@@ -65,7 +65,7 @@ export default function Header() {
                   {active && (
                     <span
                       aria-hidden="true"
-                      className={cn("absolute inset-x-4 -bottom-0.5 h-0.5 rounded-full", solid ? "bg-impact" : "bg-heaven")}
+                      className={cn("absolute inset-x-2.5 -bottom-0.5 h-0.5 rounded-full xl:inset-x-4", solid ? "bg-impact" : "bg-heaven")}
                     />
                   )}
                 </Link>
@@ -77,17 +77,18 @@ export default function Header() {
             <a
               href={SITE.phoneHref}
               className={cn(
-                "flex items-center gap-2 text-[15px] font-semibold transition-colors",
+                "flex items-center gap-2 whitespace-nowrap text-[15px] font-semibold transition-colors",
                 solid ? "text-champion hover:text-impact" : "text-white hover:text-heaven"
               )}
             >
               <Phone className="h-4 w-4" aria-hidden="true" />
-              {SITE.phone}
+              <span className="hidden xl:inline">{SITE.phone}</span>
+              <span className="sr-only xl:hidden">Call {SITE.phone}</span>
             </a>
             <button
               type="button"
               onClick={() => open("")}
-              className={cn("btn !px-5 !py-2.5", solid ? "btn-primary" : "btn-light")}
+              className={cn("btn whitespace-nowrap !px-5 !py-2.5", solid ? "btn-primary" : "btn-light")}
             >
               Free consultation
             </button>

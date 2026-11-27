@@ -56,12 +56,6 @@ export default async function ServicePage({ params }) {
   const c = b.content || {};
   const meta = SERVICES.find((s) => s.slug === slug);
   const category = CATEGORIES.find((x) => x.value === meta?.category);
-  const SERVICE_HERO_IMAGES = {
-    registration: "/images/service-registration.webp",
-    compliance: "/images/service-compliance.webp",
-    funding: "/images/service-funding.webp",
-  };
-  const heroImage = SERVICE_HERO_IMAGES[meta?.category] || "/images/service-compliance.webp";
   const url = `${SITE.url}/service/${slug}`;
   const similar = (b.sidesimilarites || []).map(resolveSimilar).filter((s) => s && s.slug !== slug);
   const docs = c.documentsRequiredDetailed || b.documentsRequired;
@@ -111,7 +105,8 @@ export default async function ServicePage({ params }) {
         title={b.bigtitlle}
         lead={b.description}
         crumbs={[{ label: "Solutions", href: "/solution" }, { label: b.title }]}
-        image={heroImage}
+        image="/illustrations/hero/solutions.webp"
+        sticker="Expert-led, end to end"
         imageAlt={b.title}
       >
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">

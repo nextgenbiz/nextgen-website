@@ -11,6 +11,7 @@ export default function sitemap() {
     page("/", "weekly", 1.0),
     page("/about", "monthly", 0.8),
     page("/solution", "weekly", 0.9),
+    page("/digital-sahaay", "monthly", 0.8),
     page("/contact", "monthly", 0.7),
     page("/blog", "weekly", 0.8),
     page("/privacy-policy", "yearly", 0.3),

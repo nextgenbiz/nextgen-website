@@ -26,6 +26,7 @@ export const NAV = [
   { label: "Home", href: "/" },
   { label: "Our Story", href: "/about" },
   { label: "Solutions", href: "/solution" },
+  { label: "Digital Sahaay", href: "/digital-sahaay" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];

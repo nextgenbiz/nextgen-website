@@ -135,6 +135,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-scroll-behavior="smooth" className={`${standIn.variable} ${gilroy.variable}`}>
       <head>
+        {/*
+          pulsoicon-react can start an icon's hover animation in the instant after its animation controls were cleaned up
+          (Fast Refresh, route change). Its promise then rejects with "controls.start() should only be called after a
+          component has mounted", which Next's dev overlay shows as a Runtime Error. Nothing is broken: that one hover
+          just does not animate. This inline script runs before the app boots (so it is first in line) and swallows
+          exactly that message; every other error still reaches the console and the overlay.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){function h(e){var m=(e.reason&&e.reason.message)||e.message||String(e.reason||'');if(m.indexOf('controls.')!==-1&&m.indexOf('should only be called after a component has mounted')!==-1){e.preventDefault();e.stopImmediatePropagation()}}window.addEventListener('unhandledrejection',h,true);window.addEventListener('error',h,true)})();",
+          }}
+        />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <JsonLd data={organizationLd} />

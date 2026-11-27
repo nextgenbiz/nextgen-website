@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "@/components/ui/icons";
 import Logo from "@/components/ui/Logo";
-import { MotifMark } from "@/components/ui/Motif";
 import { FOOTER_NOTICE, NAV, OFFICES, SITE } from "@/lib/site";
-import { WHY_US } from "@/data/content";
 import { SERVICES } from "@/data/services";
 
 function Social({ href, label, children }) {
@@ -31,19 +29,6 @@ export default function Footer() {
 
   return (
     <footer className="on-dark bg-champion text-white/75">
-      {/* principles strip */}
-      <div className="border-b border-white/10">
-        <div className="container flex flex-wrap items-center justify-center gap-x-10 gap-y-3 py-6 text-sm font-semibold text-white md:justify-between">
-          {WHY_US.map((t) => (
-            <span key={t} className="flex items-center gap-2.5">
-              <span aria-hidden="true" className="h-2 w-2 rounded-full bg-heaven" />
-              {t}
-            </span>
-          ))}
-          <MotifMark tone="dark" className="hidden md:block" />
-        </div>
-      </div>
-
       <div className="container grid gap-12 py-14 md:grid-cols-12 md:py-16">
         <div className="md:col-span-4">
           <Logo variant="white" width={190} />

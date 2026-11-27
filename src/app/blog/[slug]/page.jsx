@@ -93,7 +93,8 @@ export default async function BlogPostPage({ params }) {
         eyebrow={blog.category}
         title={title}
         crumbs={[{ label: "Blog", href: "/blog" }, { label: title }]}
-        image={blog.image}
+        image="/illustrations/hero/blog.webp"
+        sticker="Guides for founders"
         imageAlt={title}
       >
         <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-mute">

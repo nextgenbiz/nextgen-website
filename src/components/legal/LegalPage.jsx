@@ -17,7 +17,6 @@ export default function LegalPage({ title, lead, updated, sections, crumb, docNa
         title={title}
         lead={lead}
         crumbs={[{ label: crumb }]}
-        image="/images/hero-legal.webp"
         imageAlt="Modern glass corporate skyscraper representing corporate governance and transparency"
       >
         {updated && <p className="mt-5 text-sm text-mute">{updated}</p>}

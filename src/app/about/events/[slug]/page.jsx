@@ -42,7 +42,6 @@ export default async function EventPage({ params }) {
           </>
         }
         crumbs={[{ label: "Our Story", href: "/about" }, { label: "Events", href: "/about/events" }, { label: event.title }]}
-        image={images[0]?.src || "/images/hero-events.webp"}
         imageAlt={`${event.title} celebrations at NextGen`}
       />
       <Section>

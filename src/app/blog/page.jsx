@@ -89,7 +89,8 @@ export default function BlogIndex() {
         }
         lead="Expert-written guides on startups, MSME growth, funding, compliance and business strategy."
         crumbs={[{ label: "Blog" }]}
-        image="/images/hero-blog.webp"
+        image="/illustrations/hero/blog.webp"
+        sticker="Guides for founders"
         imageAlt="Modern editorial workspace with strategy journal and laptop"
       />
 

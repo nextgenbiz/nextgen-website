@@ -1,11 +1,11 @@
 import Link from "next/link";
+import { PopPair } from "@/components/illustrations/PeepScene";
 import Script from "next/script";
 import { ChevronRight, Clock, Mail, MapPin, Phone, ArrowUpRight } from "@/components/ui/icons";
 import { Container, Section } from "@/components/ui/Section";
 import ContactFormCard from "@/components/forms/ContactFormCard";
 import CtaBand from "@/components/home/CtaBand";
 import JsonLd, { breadcrumbLd } from "@/components/seo/JsonLd";
-import { PopPair } from "@/components/illustrations/PeepScene";
 import { OFFICES, SITE } from "@/lib/site";
 
 const ogTitle = "Get in Touch | Expert Business Support at NextGen Consultancy";
@@ -74,7 +74,12 @@ export default function ContactPage() {
         On desktop: headline + illustration on the left, form on the right, brand circles bleeding
         behind the card (Swiss-poster style asymmetry).
       */}
-      <section className="relative border-b border-line bg-white">
+      <section className="relative isolate overflow-hidden border-b-[3px] border-champion bg-white">
+        {/* same faint blueprint grid as the other heroes */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07] [background-image:linear-gradient(#101D32_1px,transparent_1px),linear-gradient(90deg,#101D32_1px,transparent_1px)] [background-size:44px_44px]"
+        />
         <Container className="relative grid gap-x-14 gap-y-8 pb-12 pt-24 md:pt-32 lg:grid-cols-12 lg:pb-16">
           {/* 1. headline (+ art on desktop) */}
           <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1">
@@ -87,9 +92,11 @@ export default function ContactPage() {
                 </li>
               </ol>
             </nav>
-            <p className="eyebrow mb-3">Contact</p>
+            <p className="mb-4 inline-block -rotate-1 border-[3px] border-champion bg-heaven px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.14em] text-white shadow-[3px_3px_0_0_#101D32]">
+              Contact
+            </p>
             <h1 className="h1 !text-[2.15rem] !leading-[1.1] md:!text-[3rem]">
-              Let&apos;s build something <span className="text-impact">great together.</span>
+              Let&apos;s build something <span className="my-1 inline-block bg-impact px-2.5 pb-0.5 text-white">great together.</span>
             </h1>
             <p className="lead mt-4 max-w-md">
               Partner with industry experts who deliver innovative solutions tailored to your unique business needs.

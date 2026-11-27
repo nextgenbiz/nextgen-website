@@ -54,7 +54,8 @@ export default function AboutPage() {
         }
         lead="Revolutionizing consultancy with breakthrough AI technology. We transform visionary ideas into tangible success stories that reshape industries."
         crumbs={[{ label: "Our Story" }]}
-        image="/images/hero-about.webp"
+        image="/illustrations/hero/our-story.webp"
+        sticker="Ahmedabad · Pune · Chennai"
         imageAlt="NextGen Business Consultancy leadership team collaborating in a glass corporate corridor"
       >
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">

@@ -7,7 +7,7 @@ import LeadForm from "./LeadForm";
 export default function ContactFormCard() {
   const [sent, setSent] = useState(false);
   return (
-    <div className="rounded-3xl border border-line bg-white p-6 shadow-lift md:p-9">
+    <div className="border-[3px] border-champion bg-white p-6 shadow-[8px_8px_0_0_#0F42C0] md:p-9">
       {!sent && (
         <>
           <h2 className="h3">Send us a message</h2>

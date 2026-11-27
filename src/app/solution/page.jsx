@@ -81,7 +81,8 @@ export default function SolutionPage() {
         }
         lead="From startups to established enterprises, we provide comprehensive funding solutions across all business categories with expert guidance and support."
         crumbs={[{ label: "Solutions" }]}
-        image="/images/hero-solutions.webp"
+        image="/illustrations/hero/solutions.webp"
+        sticker="Registration · Compliance · Funding"
         imageAlt="Indian entrepreneur and financial strategist reviewing growth and funding plans"
       >
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
