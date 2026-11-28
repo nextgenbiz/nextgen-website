@@ -1700,8 +1700,7 @@ export default function FundingChatbot({ data = fundingData }) {
         @keyframes fcBlink { 0%,80%,100%{opacity:.2} 40%{opacity:1} }
         @keyframes fcFill   { from{width:0} to{width:100%} }
         @keyframes fcSlide  { from{opacity:0;transform:translateY(20px) scale(.97)} to{opacity:1;transform:translateY(0) scale(1)} }
-        @keyframes fcPulse  { 0%,100%{box-shadow:0 4px 20px rgba(15,66,192,.4)} 50%{box-shadow:0 4px 32px rgba(15,66,192,.65)} }
-        .fc-fab:hover  { transform:scale(1.08)!important; box-shadow:0 6px 28px rgba(15,66,192,.55)!important; }
+        .fc-fab:hover  { transform:scale(1.08)!important; }
         .fc-fab:active { transform:scale(0.96)!important; }
       `}</style>
 
@@ -1898,8 +1897,8 @@ export default function FundingChatbot({ data = fundingData }) {
           alignItems: "center",
           justifyContent: "center",
           zIndex: 10000,
-          transition: "transform .2s, box-shadow .2s",
-          animation: "fcPulse 2.5s ease-in-out infinite",
+          boxShadow: "none",
+          transition: "transform .2s",
         }}
       >
         {open ? (
@@ -1907,8 +1906,24 @@ export default function FundingChatbot({ data = fundingData }) {
             <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
           </svg>
         ) : (
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
-            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 10H6v-2h12v2zm0-3H6V7h12v2z" />
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            {/* Bot face: antenna, head, ears, eyes */}
+            <path d="M12 8V4H8" />
+            <rect width="16" height="12" x="4" y="8" rx="2" />
+            <path d="M2 14h2" />
+            <path d="M20 14h2" />
+            <path d="M15 13v2" />
+            <path d="M9 13v2" />
           </svg>
         )}
       </button>
