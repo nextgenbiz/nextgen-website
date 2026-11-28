@@ -33,17 +33,17 @@ const BUTTONS =
 
 export default function PageHero({ eyebrow, title, lead, crumbs = [], children, image, aside, sticker }) {
   const art = image ? { src: image, width: 1500, height: 800 } : DEFAULT_ART;
-  const sizes = "(min-width: 1024px) 50vw, 0px";
+  const sizes = "(min-width: 1024px) 50vw, 90vw";
 
   return (
-    <section className="relative isolate flex min-h-[35rem] overflow-hidden border-b-[3px] border-champion bg-white">
+    <section className="relative isolate flex overflow-hidden lg:min-h-[35rem] border-b-[3px] border-champion bg-white">
       {/* faint blueprint grid, as on the home hero */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07] [background-image:linear-gradient(#101D32_1px,transparent_1px),linear-gradient(90deg,#101D32_1px,transparent_1px)] [background-size:44px_44px]"
       />
 
-      <Container className="grid w-full items-center gap-8 pb-8 pt-[5rem] lg:grid-cols-12 lg:gap-8 lg:pt-[5.5rem]">
+      <Container className="grid w-full items-center gap-8 pb-12 pt-[5.5rem] lg:grid-cols-12 lg:pb-8 lg:gap-8 lg:pt-[5.5rem]">
         <div className="lg:col-span-5">
           <div className="max-w-xl">
             {crumbs.length > 0 && (
@@ -77,8 +77,8 @@ export default function PageHero({ eyebrow, title, lead, crumbs = [], children, 
         </div>
 
         {/* illustration in a hard-edged frame, a sticker stuck on its corner */}
-        <div aria-hidden="true" className={cn("relative hidden lg:col-span-7 lg:block", !image && !aside && "lg:ml-auto lg:w-full lg:max-w-[30rem]")}>
-          <div className="border-[3px] border-champion bg-white p-3 shadow-[10px_10px_0_0_#0F42C0]">
+        <div aria-hidden="true" className={cn("relative mr-2 mt-2 lg:col-span-7 lg:mr-0 lg:mt-0", !image && !aside && "mx-auto w-full max-w-[26rem] lg:ml-auto lg:max-w-[30rem]")}>
+          <div className="border-[3px] border-champion bg-white p-2 shadow-[6px_6px_0_0_#0F42C0] sm:p-3 lg:shadow-[10px_10px_0_0_#0F42C0]">
             {aside ? (
               <div className="grid aspect-[16/9] place-items-center bg-surface">{aside}</div>
             ) : (
@@ -86,7 +86,7 @@ export default function PageHero({ eyebrow, title, lead, crumbs = [], children, 
             )}
           </div>
           {sticker && (
-            <p className="absolute -bottom-5 right-4 max-w-[16rem] rotate-2 border-[3px] border-champion bg-heaven px-3 py-2 text-[13px] font-extrabold leading-tight text-white shadow-[4px_4px_0_0_#101D32]">
+            <p className="absolute -bottom-4 right-2 max-w-[11rem] sm:max-w-[16rem] lg:-bottom-5 lg:right-4 rotate-2 border-[3px] border-champion bg-heaven px-3 py-2 text-xs font-extrabold leading-tight text-white shadow-[4px_4px_0_0_#101D32]">
               {sticker}
             </p>
           )}

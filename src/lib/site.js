@@ -36,7 +36,7 @@ export const OFFICES = [
     title: "Head Office",
     city: "Ahmedabad",
     address:
-      "10th Floor, Shilp Business Gateway Corporate Office, Beside Nirma University, S.G. Highway, Ahmedabad 380054",
+      "8th Floor, Shilp Business Gateway Corporate Office, Beside Nirma University, S.G. Highway, Ahmedabad 380054",
     map: "https://www.google.com/maps/search/?api=1&query=Shilp+Business+Gateway+S.G.+Highway+Ahmedabad+380054",
   },
   {

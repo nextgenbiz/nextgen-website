@@ -9,7 +9,7 @@ export default async function EventCards({ limit }) {
   const covers = await Promise.all(events.map((e) => getCover(e)));
 
   return (
-    <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid grid-cols-2 gap-x-3 gap-y-6 sm:gap-5 lg:grid-cols-3">
       {events.map((e, i) => (
         <li key={e.slug}>
           <Link href={`/about/events/${e.slug}`} className="group block">
@@ -23,12 +23,12 @@ export default async function EventCards({ limit }) {
                   className="object-cover transition duration-500 group-hover:scale-105"
                 />
               )}
-              <span className="absolute left-3 top-3 rounded-full bg-white px-3 py-1 text-xs font-semibold text-champion">{e.category}</span>
+              <span className="absolute left-2 top-2 rounded-full bg-white px-2.5 py-0.5 text-[11px] sm:left-3 sm:top-3 sm:px-3 sm:py-1 sm:text-xs font-semibold text-champion">{e.category}</span>
               <span className="absolute bottom-3 right-3 grid h-10 w-10 place-items-center rounded-full bg-impact text-white opacity-0 transition group-hover:opacity-100">
                 <ArrowUpRight className="h-5 w-5" />
               </span>
             </div>
-            <h3 className="mt-4 text-h4 font-semibold text-champion group-hover:text-impact">
+            <h3 className="mt-3 text-[0.95rem] font-semibold leading-snug sm:mt-4 sm:text-h4 text-champion group-hover:text-impact">
               {e.title} <span className="font-medium text-mute">· {e.subtitle}</span>
             </h3>
             <p className="mt-1 text-sm text-mute">{e.date}</p>

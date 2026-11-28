@@ -15,14 +15,14 @@ export default function Stats() {
           <p className="eyebrow mb-3 !text-heaven-200">Our impact in numbers</p>
           <h2 className="h2 max-w-xl">Driving innovation and excellence, one business at a time.</h2>
         </div>
-        <dl className="grid gap-px overflow-hidden rounded-2xl bg-white/20 md:grid-cols-3">
+        <dl className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl bg-white/20">
           {STATS.map((s) => (
-            <div key={s.label} className="bg-impact p-7 md:p-9">
-              <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-heaven-200">{s.label}</dt>
-              <dd className="mt-3 font-display text-[3.25rem] leading-none text-white md:text-6xl">
+            <div key={s.label} className="bg-impact p-4 sm:p-7 md:p-9">
+              <dt className="text-[10px] font-semibold uppercase tracking-[0.1em] sm:text-xs sm:tracking-[0.14em] text-heaven-200">{s.label}</dt>
+              <dd className="mt-3 font-display text-[2.25rem] leading-none text-white sm:text-[3.25rem] md:text-6xl">
                 <CountUp to={s.to} decimals={s.decimals} suffix={s.suffix} />
               </dd>
-              <dd className="mt-3 text-[15px] text-white/80">{s.note}</dd>
+              <dd className="mt-3 hidden text-[15px] text-white/80 sm:block">{s.note}</dd>
             </div>
           ))}
         </dl>
