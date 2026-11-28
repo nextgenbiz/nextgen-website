@@ -19,7 +19,7 @@ export const DS_CONTACT = {
   whatsapp: "https://wa.me/919898346774",
   email: "info@digitalsahaay.com",
   hours: "Mon – Sat, 9:30 am – 7:00 pm",
-  offices: "Ahmedabad · Pune · Chennai",
+  offices: "Ahmedabad · Pune · Chennai · Delhi",
 };
 
 // icon = name of an export in components/ui/icons.js
