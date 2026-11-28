@@ -55,7 +55,7 @@ export default function AboutPage() {
         lead="Revolutionizing consultancy with breakthrough AI technology. We transform visionary ideas into tangible success stories that reshape industries."
         crumbs={[{ label: "Our Story" }]}
         image="/illustrations/hero/our-story.webp"
-        sticker="Ahmedabad · Pune · Chennai"
+        sticker="Ahmedabad · Pune · Chennai · Delhi"
         imageAlt="NextGen Business Consultancy leadership team collaborating in a glass corporate corridor"
       >
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -94,9 +94,9 @@ export default function AboutPage() {
             title="Next-gen Business Consultancy's journey to leadership."
             lead="Every milestone tells a story of innovation, growth, and dedication."
           />
-          <ol className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
             {TIMELINE.map((t, i) => (
-              <Reveal key={t.year} as="li" delay={i * 0.06} className="bg-white p-7 md:p-9">
+              <Reveal key={t.year} as="li" delay={i * 0.06} className="bg-white p-7 sm:last:col-span-2 md:p-9 lg:last:col-span-1">
                 <p className="text-stat">{t.year}</p>
                 <span aria-hidden="true" className="my-5 block h-1 w-10 rounded-full bg-heaven" />
                 <h3 className="h4">{t.title}</h3>

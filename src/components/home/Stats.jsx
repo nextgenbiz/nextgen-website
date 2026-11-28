@@ -4,7 +4,7 @@ import CountUp from "@/components/ui/CountUp";
 const STATS = [
   { to: 80, suffix: "+", label: "Solutions", note: "Across registration, compliance and funding" },
   { to: 4.9, decimals: 1, label: "Google rating", note: "Rated highly by clients and verified authorities" },
-  { to: 3, label: "Cities", note: "Ahmedabad, Pune and Chennai" },
+  { to: 4, label: "Cities", note: "Ahmedabad, Pune, Chennai and Delhi" },
 ];
 
 export default function Stats() {

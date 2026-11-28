@@ -145,6 +145,7 @@ export const TIMELINE = [
   { year: "2023", title: "Building Trust Across India" },
   { year: "2024", title: "Towards Nationwide Leadership" },
   { year: "2025", title: "Foundation in Ahmedabad" },
+  { year: "2026", title: "Now open in Delhi" },
 ];
 
 export const VALUES = [

@@ -122,7 +122,7 @@ export default function ContactPage() {
           <h2 className="h2 max-w-2xl">We operate across multiple major cities.</h2>
           <p className="lead mt-4 max-w-2xl">Committed to providing localized service and support.</p>
 
-          <ul className="mt-12 grid gap-5 md:grid-cols-3">
+          <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {OFFICES.map((o) => (
               <li key={o.title} data-icon-trigger className="card flex flex-col p-7">
                 <span className="grid h-11 w-11 place-items-center rounded-full bg-impact text-white"><MapPin className="h-5 w-5" /></span>

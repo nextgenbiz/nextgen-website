@@ -53,6 +53,12 @@ export const OFFICES = [
       "5th Floor, RR Tower, Ramapuram, Ambedkar Nagar, Thiru Vi Ka Industrail Estate, Guindy, St.Thomas Mount, Tamil Nadu 600032",
     map: "https://www.google.com/maps/search/?api=1&query=RR+Tower+Guindy+Chennai+600032",
   },
+  {
+    title: "Delhi Office",
+    city: "Delhi",
+    address: "B-418, DLF Towers, Jasola District Centre, South Delhi, New Delhi",
+    map: "https://www.google.com/maps/search/?api=1&query=DLF+Towers+Jasola+District+Centre+New+Delhi",
+  },
 ];
 
 export const INDIAN_STATES = [
