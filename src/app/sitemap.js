@@ -17,7 +17,11 @@ export default function sitemap() {
     page("/privacy-policy", "yearly", 0.3),
     page("/terms-condition", "yearly", 0.3),
     ...SERVICES.map((s) => page(`/service/${s.slug}`, "monthly", 0.8)),
-    ...getAllBlogs().map((b) => page(`/blog/${b.slug}`, "monthly", 0.7)),
+    // Blog posts report their real modified date, so crawlers can tell what actually changed.
+    ...getAllBlogs().map((b) => ({
+      ...page(`/blog/${b.slug}`, "monthly", 0.7),
+      lastModified: new Date(`${b.modifiedDate || b.publishedDate}T00:00:00+05:30`).toISOString(),
+    })),
     ...EVENTS.map((e) => page(`/about/events/${e.slug}`, "yearly", 0.6)),
   ];
 }

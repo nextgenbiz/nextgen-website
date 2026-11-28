@@ -40,5 +40,6 @@ Disallow: /
 
 User-agent: *
 Allow: /
+Disallow: /api/
 
 Sitemap: https://www.nextgenbusiness.co.in/sitemap.xml

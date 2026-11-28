@@ -8,7 +8,7 @@ export const metadata = {
   description:
     "Explore festival celebrations, corporate events, and cultural moments at NextGen Business Consultancy that reflect our values, teamwork, and vibrant work culture.",
   robots: { index: false, follow: false },
-  alternates: { canonical: `${SITE.url}/events` },
+  alternates: { canonical: `${SITE.url}/about/events` },
 };
 
 export default function EventsPage() {

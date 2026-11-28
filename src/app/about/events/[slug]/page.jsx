@@ -15,11 +15,26 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const e = getEvent(slug);
   if (!e) return { title: "Event not found | NextGen Business Consultancy" };
+  const url = `${SITE.url}/about/events/${slug}`;
+  const title = `${e.title} ${e.subtitle} | NextGen Business Consultancy`;
+  const description = `Photos from ${e.title} at NextGen Business Consultancy, ${e.date}.`;
+  const image = `${SITE.url}/brand/og-image.png`;
   return {
-    title: `${e.title} ${e.subtitle} | NextGen Business Consultancy`,
-    description: `Photos from ${e.title} at NextGen Business Consultancy, ${e.date}.`,
-    alternates: { canonical: `${SITE.url}/about/events/${slug}` },
+    title,
+    description,
+    alternates: { canonical: url },
     robots: { index: true, follow: true },
+    // Without this the page inherits the homepage's og:url / og:title from the root layout.
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: SITE.name,
+      locale: "en_IN",
+      type: "website",
+      images: [{ url: image, width: 1200, height: 630, alt: `${e.title} at NextGen` }],
+    },
+    twitter: { card: "summary_large_image", title, description, images: [image], creator: SITE.twitter },
   };
 }
 
